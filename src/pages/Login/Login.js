@@ -12,7 +12,7 @@ export default function Login() {
             <div>
                 <h1>My Wallet</h1>
                 
-                {haveAnAccount ? <SignIn /> : <SignUp />}
+                {haveAnAccount ? <SignIn /> : <SignUp setHaveAnAccount={setHaveAnAccount} />}
             </div>
 
             <button onClick={() => setHaveAnAccount(!haveAnAccount)}>

@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 import { Form } from '../styles/LoginForms';
 
-export default function SignUp() {
+export default function SignUp({ setHaveAnAccount }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordConf, setPasswordConf] = useState('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
+    const history = useHistory();
 
-    const processInfo = e => {
+    const validateAndSignUp = e => {
         e.preventDefault();
+
+        if (!name || !email || !password || !passwordConfirmation) return alert('Preencha todos os campos');
+
+        axios
+            .post('http://localhost:3000/user/sign-up', { name, email, password, passwordConfirmation })
+            .then(r => {
+                setHaveAnAccount(true);
+                history.push('/');
+            })
+            .catch(err => {
+                err.response.status === 409
+                    ? alert('Email já cadastrado')
+                    : alert('Erro. Por favor verifique os dados novamente');
+            });
     }
 
     return (
-        <Form onSubmit={processInfo}>
+        <Form onSubmit={validateAndSignUp}>
             <input 
                 placeholder="Nome"
                 onChange={e => setName(e.target.value)}
@@ -35,8 +52,8 @@ export default function SignUp() {
 
             <input
                 placeholder="Confirme a senha"
-                onChange={e => setPasswordConf(e.target.value)}
-                value={passwordConf}
+                onChange={e => setPasswordConfirmation(e.target.value)}
+                value={passwordConfirmation}
                 type="password" 
             />
 
