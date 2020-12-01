@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import { Form } from '../styles/LoginForms';
 
@@ -6,12 +7,21 @@ export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const processInfo = e => {
+    const validateAndSignIn = e => {
         e.preventDefault();
+
+        axios
+            .post('http://localhost:3000/user/sign-in', { email, password })
+            .then(r => {
+                console.log('Sessão iniciada')
+            })
+            .catch(err => {
+                alert(err.response.data);
+            });
     }
 
     return (
-        <Form onSubmit={processInfo}>
+        <Form onSubmit={validateAndSignIn}>
             <input 
                 placeholder="E-mail"
                 onChange={e => setEmail(e.target.value)}

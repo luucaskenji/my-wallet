@@ -23,9 +23,9 @@ export default function SignUp({ setHaveAnAccount }) {
                 history.push('/');
             })
             .catch(err => {
-                err.response.status === 409
-                    ? alert('Email já cadastrado')
-                    : alert('Erro. Por favor verifique os dados novamente');
+                err.response.status === 422
+                    ? alert('Erro. Por favor verifique os dados novamente')
+                    : alert(err.response.data);
             });
     }
 
