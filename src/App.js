@@ -1,7 +1,8 @@
 import React from 'react';
+import Login from './pages/Login/Login';
 
 export default function App() {
     return (
-        <h1>Hello World!</h1>
+        <Login />
     );
 }
