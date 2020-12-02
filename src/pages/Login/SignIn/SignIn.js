@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { Form } from '../styles/LoginForms';
+import { UserContext } from '../../../contexts/UserContext';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { setUserData } = useContext(UserContext);
+    const history = useHistory();
 
     const validateAndSignIn = e => {
         e.preventDefault();
@@ -13,7 +17,8 @@ export default function SignIn() {
         axios
             .post('http://localhost:3000/user/sign-in', { email, password })
             .then(r => {
-                console.log('Sessão iniciada')
+                setUserData(r.data);
+                history.push('/dashboard');
             })
             .catch(err => {
                 alert(err.response.data);
