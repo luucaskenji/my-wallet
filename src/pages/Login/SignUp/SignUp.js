@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import { Form } from '../styles/LoginForms';
+import { Form } from '../../../components/styles/Forms';
 
 export default function SignUp({ setHaveAnAccount }) {
     const [name, setName] = useState('');

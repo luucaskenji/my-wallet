@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import { Form } from '../styles/LoginForms';
+import { Form } from '../../../components/styles/Forms';
 import { UserContext } from '../../../contexts/UserContext';
 
 export default function SignIn() {

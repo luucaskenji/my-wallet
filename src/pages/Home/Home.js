@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
 import { UserContext } from '../../contexts/UserContext';
+import { Container } from './styles/HomePageStyles';
 
 import { IoExitOutline } from 'react-icons/io5';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { MdRemoveCircleOutline } from 'react-icons/md';
 
-import { Container } from './styles/HomePageStyles';
 
 export default function Home() {
     const { userData } = useContext(UserContext);
@@ -22,15 +24,15 @@ export default function Home() {
             </ul>
 
             <div>
-                <button>
+                <Link to ='/new-income'>
                     <IoMdAddCircleOutline size='1.2rem' color='white' />
                     <span>Nova<br />entrada</span>
-                </button>
+                </Link>
 
-                <button>
+                <a>
                     <MdRemoveCircleOutline size='1.2rem' color='white' />
                     <span>Nova<br />saída</span>
-                </button>
+                </a>
             </div>
         </Container>
     );

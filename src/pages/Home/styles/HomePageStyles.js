@@ -31,7 +31,7 @@ export const Container = styled.div`
         display: flex;
         justify-content: space-between;
 
-        button {
+        a {
             height: 120px;
             width: 48%;
             background-color: #A328D6;
@@ -41,6 +41,7 @@ export const Container = styled.div`
             justify-content: space-around;
             text-align: left;
             color: white;
+            padding-left: 10px;
         }
 
         span {

@@ -5,6 +5,7 @@ import UserProvider from './contexts/UserContext';
 
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Income from './pages/Income/Income';
 
 export default function App() {
     return (
@@ -14,6 +15,11 @@ export default function App() {
                     <Route path='/dashboard'>
                         <Home />
                     </Route>
+
+                    <Route path='/new-income'>
+                        <Income />
+                    </Route>
+
                     <Route path='/'>
                         <Login />
                     </Route>
