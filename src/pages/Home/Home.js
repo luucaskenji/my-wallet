@@ -24,15 +24,21 @@ export default function Home() {
             </ul>
 
             <div>
-                <Link to ='/new-income'>
+                <Link to={{
+                    pathname: '/new-register',
+                    state: {operationType: 'Income'}
+                }}>
                     <IoMdAddCircleOutline size='1.2rem' color='white' />
                     <span>Nova<br />entrada</span>
                 </Link>
 
-                <a>
+                <Link to={{
+                    pathname: '/new-register',
+                    state: {operationType: 'Expense'}
+                }}>
                     <MdRemoveCircleOutline size='1.2rem' color='white' />
                     <span>Nova<br />saída</span>
-                </a>
+                </Link>
             </div>
         </Container>
     );

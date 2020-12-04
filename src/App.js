@@ -5,24 +5,16 @@ import UserProvider from './contexts/UserContext';
 
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
-import Income from './pages/Income/Income';
+import Operation from './pages/MoneyOperation/MoneyOperation';
 
 export default function App() {
     return (
         <UserProvider>
             <Router>
                 <Switch>
-                    <Route path='/dashboard'>
-                        <Home />
-                    </Route>
-
-                    <Route path='/new-income'>
-                        <Income />
-                    </Route>
-
-                    <Route path='/'>
-                        <Login />
-                    </Route>
+                    <Route path='/dashboard' component={Home} />
+                    <Route path='/new-register' component={Operation} />
+                    <Route path='/' component={Login} />
                 </Switch>
             </Router>
         </UserProvider>

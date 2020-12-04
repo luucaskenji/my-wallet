@@ -3,13 +3,14 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { Form } from '../../components/styles/Forms';
-import { Container } from './styles/IncomePageStyles';
+import { Container } from './styles/OperationPageStyles';
 import { UserContext } from '../../contexts/UserContext';
 
-export default function Income() {
-    const [value, setValue] = useState('');
+export default function Operation(props) {
+    let [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const { userData } = useContext(UserContext);
+    const { operationType } = props.location.state;
     const history = useHistory();
 
     const verifyInputs = e => {
@@ -24,11 +25,11 @@ export default function Income() {
             return alert('Por favor, insira o valor:\n- Separado por vírgula\n- Informando valor dos centavos\n- Sem incluir R$');
         }
         else {
-            createIncome();
+            createOperation();
         }
     };
 
-    const createIncome = () => {
+    const createOperation = () => {
         const authHeaders = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
@@ -36,7 +37,7 @@ export default function Income() {
         };
 
         axios
-            .post('http://localhost:3000/finances/new-income', { value, description }, authHeaders)
+            .post('http://localhost:3000/finances/new-operation', { value, description, type: operationType }, authHeaders)
             .then(r => {
                 history.push('/dashboard');
             })
@@ -49,7 +50,7 @@ export default function Income() {
 
     return (
         <Container>
-            <h1>Nova entrada</h1>
+            <h1>{operationType === 'Income' ? 'Nova entrada' : 'Nova saída'}</h1>
 
             <Form onSubmit={verifyInputs}>
                 <input 
@@ -65,7 +66,7 @@ export default function Income() {
                 />
 
                 <button type='submit'>
-                    Salvar entrada
+                    {operationType === 'Income' ? 'Salvar entrada' : 'Salvar saída'}
                 </button>
             </Form>
         </Container>
