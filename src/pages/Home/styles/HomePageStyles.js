@@ -31,8 +31,24 @@ export const Container = styled.div`
         font-family: 'Teko', sans-serif;
         font-size: 1.4rem;
         color: #868686;
-        padding: 15px 15px;
+        padding: 15px 15px 0 15px;
         overflow-y: scroll;
+        position: relative;
+
+        & > div:last-child {
+            background-color: white;
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            border-radius: 5px;
+            width: 100%;
+            padding: 8px 15px;
+            margin: 0;
+
+            span:last-child {
+                color: ${({ balanceIsNegative }) => balanceIsNegative ? '#C70000' : '#03AC00'}
+            }
+        }
     }
 
     div {
