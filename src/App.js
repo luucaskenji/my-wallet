@@ -5,7 +5,7 @@ import UserProvider from './contexts/UserContext';
 
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
-import Operation from './pages/MoneyOperation/MoneyOperation';
+import NewOperation from './pages/MoneyOperation/MoneyOperation';
 
 export default function App() {
     return (
@@ -13,7 +13,7 @@ export default function App() {
             <Router>
                 <Switch>
                     <Route path='/dashboard' component={Home} />
-                    <Route path='/new-register' component={Operation} />
+                    <Route path='/new-operation' component={NewOperation} />
                     <Route path='/' component={Login} />
                 </Switch>
             </Router>

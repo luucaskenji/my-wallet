@@ -6,7 +6,7 @@ import { Form } from '../../components/styles/Forms';
 import { Container } from './styles/OperationPageStyles';
 import { UserContext } from '../../contexts/UserContext';
 
-export default function Operation(props) {
+export default function NewOperation(props) {
     let [value, setValue] = useState('');
     const [description, setDescription] = useState('');
     const { userData } = useContext(UserContext);

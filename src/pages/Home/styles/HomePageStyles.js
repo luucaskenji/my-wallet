@@ -24,6 +24,15 @@ export const Container = styled.div`
         flex-grow: 1;
         background-color: white;
         border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: ${({ isEmpty }) => isEmpty ? 'center' : 'flex-start'};
+        align-items: center;
+        font-family: 'Teko', sans-serif;
+        font-size: 1.4rem;
+        color: #868686;
+        padding: 15px 15px;
+        overflow-y: scroll;
     }
 
     div {
